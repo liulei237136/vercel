@@ -29,7 +29,7 @@ function upload(bucket, body, key) {
 }
 
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     const key = uuidv4();
     const bucket = 'audio';
     // const result = await upload(bucket, body, key);
