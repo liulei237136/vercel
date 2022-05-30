@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="file" multiple id="input" onchange="upload()">
+    <script>
+        //    Axios({
+
+
+        //    });
+        function upload() {
+            axios({
+                method: 'post',
+                url: 'http://localhost:3000/api/upload',
+                data: {
+                    firstName: 'Fred',
+                    lastName: 'Flintstone'
+                }
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    console.log(response.headers);
+                    console.log(response.config);
+                });
+
+        }
+    </script>
+</body>
+
+</html>

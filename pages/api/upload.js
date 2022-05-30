@@ -1,5 +1,6 @@
 import AWS from 'aws-sdk';
 import { v4 as uuidv4 } from 'uuid';
+import formidable from 'formidable';
 
 var s3 = new AWS.S3({ apiVersion: '2021-04-22' });
 s3.endpoint = "https://s3.cn-global-0.xxyy.co:16000";
@@ -28,12 +29,28 @@ function upload(bucket, body, key) {
 }
 
 
-
-export default async function handler(req, res) {
+export default function handler(req, res) {
     const key = uuidv4();
-    const body = req.body.file;
     const bucket = 'audio';
-    const result = await upload(bucket, body, key);
+    // const result = await upload(bucket, body, key);
 
-    res.status(200).json({uuid: key});
+    const form = formidable({});
+
+    try {
+        const result = await new Promise((resolve, reject) => {
+            form.parse(req, (err, fields, files) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve({ fields, files });
+            })
+        });
+
+    }catch(err){
+        return res.status(400);
+    }
+
+    return res.status(200);
+
 }
