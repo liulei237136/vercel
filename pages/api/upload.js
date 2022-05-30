@@ -63,9 +63,9 @@ function upload() {
 //     console.log(err);
 // });
 
-export default function  handler(req, res) {
+export default  async function  handler(req, res) {
     await  upload();
 
-    res.status(200).json({ name: 'test 1.mp3' })
+    res.status(200).json({ name: '3' })
   }
   
