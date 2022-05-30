@@ -1,8 +1,5 @@
-// const fs = require('fs');
-import fs from 'fs';
-// var AWS = require('aws-sdk');
 import AWS from 'aws-sdk';
-// const axios = require('axios');
+import { v4 as uuidv4 } from 'uuid';
 
 var s3 = new AWS.S3({ apiVersion: '2021-04-22' });
 s3.endpoint = "https://s3.cn-global-0.xxyy.co:16000";
@@ -12,12 +9,12 @@ s3.config.update({
     signatureVersion: "v4"
 });
 
-function upload() {
+function upload(bucket, body, key) {
     return new Promise((resolve, reject) => {
         var params = {
-            Body: 'kjfksjf',
-            Bucket: 'audio',
-            Key: '1.txt',
+            Body: body,
+            Bucket: bucket,
+            Key: key,
         };
         s3.putObject(params, function (err, data) {
             if (err) {
@@ -33,7 +30,10 @@ function upload() {
 
 
 export default async function handler(req, res) {
-    await upload();
+    const key = Muuidv4();
+    const body = req.body.file;
+    const bucket = 'audio';
+    const result = await upload(bucket, body, key);
 
-    res.status(200).json({ name: '3' })
+    res.status(200).json({uuid: key});
 }
