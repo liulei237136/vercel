@@ -66,6 +66,6 @@ function upload() {
 export default function  handler(req, res) {
     await  upload();
 
-    res.status(200).json({ name: 'John Doe' })
+    res.status(200).json({ name: 'test 1.mp3' })
   }
   
