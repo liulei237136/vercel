@@ -30,7 +30,7 @@ function upload(bucket, body, key) {
 
 
 export default async function handler(req, res) {
-    const key = Muuidv4();
+    const key = uuidv4();
     const body = req.body.file;
     const bucket = 'audio';
     const result = await upload(bucket, body, key);
