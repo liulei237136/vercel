@@ -2,16 +2,23 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
+// import FormData from 'form-data';
 
 function upload(e) {
   const input = e.target;
   const file = input.files[0];
+
+  const formdata = new FormData();
+  formdata.append(file, file);
   axios({
     method: 'post',
     url: '/api/upload',
-    data: {
-      file: file
+    data: formdata,
+    headers: {
+      'Content-Type': 'multipart/form-data'
     }
+
+
   })
     .then(function (response) {
       console.log(response.data);
