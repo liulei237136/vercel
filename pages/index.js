@@ -23,7 +23,7 @@ function upload(e) {
 export default function Home() {
   return (
     <div className={styles.container}>
-      <input type="file" multiple id="input" onchange="upload()"></input>
+      <input type="file" multiple id="input" onChange="upload()"></input>
     </div>
   )
 }
