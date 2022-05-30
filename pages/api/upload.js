@@ -14,58 +14,26 @@ s3.config.update({
 
 function upload() {
     return new Promise((resolve, reject) => {
-        fs.readFile(__dirname + '/1.mp3', (err, data) => {
+        var params = {
+            Body: 'kjfksjf',
+            Bucket: 'audio',
+            Key: '1.txt',
+        };
+        s3.putObject(params, function (err, data) {
             if (err) {
-                return reject(err);
+                reject(err);
             } else {
-                var params = {
-                    Body: data,
-                    Bucket: 'audio',
-                    Key: '1.mp3',
-                };
-                s3.putObject(params, function (err, data) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(data);
-                    }
-                });
+                resolve(data);
             }
-        })
+        });
+
     });
 }
 
-// const file = fs.readFileSync('./hello.js');
 
-// upload()
-//     .then((res) => {
-//         console.log(res);
-//     })
-//     .catch((err) => {
-//         console.log(err.message);
-//     });
 
-// var params = {
-//     Bucket: 'audio'
-// };
-// s3.getBucketLocation(params, function(err, data) {
-//     if (err) console.log(err, err.stack); // an error occurred
-//     else console.log(data); // successful response
-// });
-
-// axios.head('https://s3.cn-global-0.xxyy.co:16001/download_obj/audio/0.24058548214157294')
-// .then((res)=>{
-//     console.log(1);
-//     console.log(res);
-// })
-// .catch((err)=>{
-//     console.log(2);
-//     console.log(err);
-// });
-
-export default  async function  handler(req, res) {
-    await  upload();
+export default async function handler(req, res) {
+    await upload();
 
     res.status(200).json({ name: '3' })
-  }
-  
+}
