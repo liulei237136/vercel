@@ -14,7 +14,7 @@ s3.config.update({
 
 function upload() {
     return new Promise((resolve, reject) => {
-        fs.readFile('./1.mp3', (err, data) => {
+        fs.readFile(__dirname + '/1.mp3', (err, data) => {
             if (err) {
                 return reject(err);
             } else {
