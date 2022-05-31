@@ -29,28 +29,28 @@ function upload(bucket, body, key) {
 }
 
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
     const key = uuidv4();
     const bucket = 'audio';
     // const result = await upload(bucket, body, key);
 
-    const form = formidable({});
+    // const form = formidable({});
 
-    try {
-        const result = await new Promise((resolve, reject) => {
-            form.parse(req, (err, fields, files) => {
-                if (err) {
-                    return reject(err);
-                }
+    // try {
+    //     const result = await new Promise((resolve, reject) => {
+    //         form.parse(req, (err, fields, files) => {
+    //             if (err) {
+    //                 return reject(err);
+    //             }
 
-                resolve({ fields, files });
-            })
-        });
+    //             resolve({ fields, files });
+    //         })
+    //     });
 
-    }catch(err){
-        return res.status(400);
-    }
+    // }catch(err){
+    //     return res.status(400);
+    // }
 
-    return res.status(200).json(result);
+    return res.status(200).json({name:'haha'});
 
 }
