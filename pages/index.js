@@ -9,13 +9,15 @@ function upload(e) {
   const file = input.files[0];
 
   const formdata = new FormData();
-  formdata.append(file, file);
+  // formdata.append(file, file);
+  formdata.append('liu', 'lei');
   axios({
     method: 'post',
     url: '/api/upload',
     data: formdata,
     headers: {
-      'Content-Type': 'multipart/form-data'
+      // 'Content-Type': 'multipart/form-data'
+      'Content-Type': 'text/plain'
     }
 
 
