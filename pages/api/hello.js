@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from 'axios';
 const http = require('http');
+const https = require('https');
 
 
 
@@ -24,7 +25,7 @@ export default async function handler(req, res) {
   // res
   try {
     const data = await new Promise((resolve, reject) => {
-      http.get('https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
+      https.get('http://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
         if (res.statusCode !== 200) {
           return reject('error');
         }
