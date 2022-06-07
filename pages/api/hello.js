@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         }
         let data = '';
         res.on('data', (chunk) => {
-          data += chunk.toString();
+          data += chunk;
         });
         res.on('end', () => {
           return resolve(data);
