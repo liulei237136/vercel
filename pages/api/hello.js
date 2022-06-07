@@ -10,6 +10,13 @@ export default async function handler(req, res) {
 
   const data = result.data;
 
+//   Accept-Ranges: bytes
+// Connection: keep-alive
+// Content-Length: 81132
+
+  res.setHeader('Content-Type', 'audio/mepg');
+  res.setHeader('Accept-Ranges', 'bytes');
+  res.setHeader('Content-Length', '81132');
   res.status(200).send(data);
   // res
 }
