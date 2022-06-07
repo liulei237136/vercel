@@ -17,6 +17,6 @@ export default async function handler(req, res) {
   res.setHeader('Content-Type', 'audio/mepg');
   res.setHeader('Accept-Ranges', 'bytes');
   res.setHeader('Content-Length', '81132');
-  res.status(200).send(data);
+  res.status(200).end(data);
   // res
 }
