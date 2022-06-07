@@ -10,31 +10,10 @@
 </head>
 
 <body>
-    <input type="file" multiple id="input" onchange="upload()">
-    <script>
-        //    Axios({
-
-
-        //    });
-        function upload() {
-            axios({
-                method: 'post',
-                url: 'http://localhost:3000/api/upload',
-                data: {
-                    firstName: 'Fred',
-                    lastName: 'Flintstone'
-                }
-            })
-                .then(function (response) {
-                    console.log(response.data);
-                    console.log(response.status);
-                    console.log(response.statusText);
-                    console.log(response.headers);
-                    console.log(response.config);
-                });
-
-        }
-    </script>
+    <audio controls>
+        <source src="https://vercel-pi-two.vercel.app/api/hello" type="audio/mpeg" >
+        <!-- <source src="https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3" type="audio/mpeg" > -->
+    </audio>
 </body>
 
 </html>
