@@ -22,11 +22,11 @@ export default async function handler(req, res) {
   // res.setHeader('Content-Length', '81132');
   // res.status(200).end(data);
   // res
-  const data = await  new Promise((resolve,reject)=>{
+  const data = await new Promise((resolve, reject) => {
     http.get('https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
-      if (res.statusCode !== 200) {
-        return reject('');
-      }
+      // if (res.statusCode !== 200) {
+      //   return reject('');
+      // }
       let data = '';
       res.on('data', (chunk) => {
         data += chunk.toString();
@@ -37,8 +37,8 @@ export default async function handler(req, res) {
     });
   });
 
-   res.setHeader('Content-Type', 'audio/mepg');
+  res.setHeader('Content-Type', 'audio/mepg');
   // res.setHeader('Accept-Ranges', 'bytes');
   // res.setHeader('Content-Length', '81132');
-  res.status(200).end(data); 
+  res.status(200).end(data);
 }
