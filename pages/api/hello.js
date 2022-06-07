@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   // res
   try {
     const resInner = await new Promise((resolve, reject) => {
-      https.get('https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
+      https.get('https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1685.mp3', (res) => {
         if (res.statusCode !== 200) {
           return reject('error');
         }
