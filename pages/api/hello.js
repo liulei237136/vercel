@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   // res
   try {
     const data = await new Promise((resolve, reject) => {
-      https.get('http://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
+      https.get('https://diandu-1307995562.cos.ap-hongkong.myqcloud.com/1.mp3', (res) => {
         if (res.statusCode !== 200) {
           return reject('error');
         }
@@ -40,8 +40,8 @@ export default async function handler(req, res) {
     });
 
     res.setHeader('Content-Type', 'audio/mepg');
-    res.setHeader('Accept-Ranges', 'bytes');
-    res.setHeader('Content-Length', '81132');
+    // res.setHeader('Accept-Ranges', 'bytes');
+    // res.setHeader('Content-Length', '81132');
     res.status(200).send(data);
 
   } catch (e) {
